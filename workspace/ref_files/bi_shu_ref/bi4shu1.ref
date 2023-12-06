@@ -1,0 +1,61 @@
+{
+    "language": "zh-tw",
+    "type": "advance",
+    "version": {
+        "atk": "v268",
+        "intent": "1.0"
+    },
+    "user_defined": {},
+    "utterance": {
+        "必須品": {
+            "id": "695fe22b-ed8d-4801-940c-0ce91c77c815",
+            "pos": "<MODAL>必須</MODAL><ENTITY_oov>品</ENTITY_oov>",
+            "lexy": [],
+            "pattern": "<MODAL>必須</MODAL><(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>品</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>"
+        },
+        "必需寫完": {
+            "id": "cccf5457-0bf4-4e91-a265-60e5ed6d1bec",
+            "pos": "<MODAL>必</MODAL><VerbP>需寫完</VerbP>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需寫完|)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "<MODAL>必</MODAL><(ACTION_verb|VerbP)>需+[^<]+</(ACTION_verb|VerbP)>"
+        },
+        "必需要做": {
+            "id": "f3a30a93-847e-490f-a89f-725e9779c3e0",
+            "pos": "<MODAL>必</MODAL><ACTION_verb>需要</ACTION_verb><ACTION_verb>做</ACTION_verb>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需要|想要|索要|要求|需求|想拿|想買|索求|索討|允許|願意)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(做|作用|假作|假裝|冒充|創作|創造|喬裝|孕育|攝製|生出)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "(<MODAL>必</MODAL>)<(ACTION_verb|VerbP)>(需)要</(ACTION_verb|VerbP)><(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>"
+        },
+        "必需你親自去": {
+            "id": "169beff3-7149-41a6-8ad4-c1595726341e",
+            "pos": "<MODAL>必</MODAL><ACTION_verb>需</ACTION_verb><ENTITY_pronoun>你</ENTITY_pronoun><MODIFIER>親自</MODIFIER><ACTION_verb>去</ACTION_verb>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需|需要|想拿|想要|想買|需預|需約|允許|需另|需經過|要)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(去|要去|回去|想去|去了|跑去|回來|跑來|趕去|出去|來)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "(<MODAL>必</MODAL>)<(ACTION_verb|VerbP)>需</(ACTION_verb|VerbP)>(.+)?<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>"
+        },
+        "必須充足陽光": {
+            "id": "d3bbe877-9d45-4347-ac4b-7f18bf1b76e8",
+            "pos": "<MODAL>必須</MODAL><MODIFIER>充足</MODIFIER><ENTITY_noun>陽光</ENTITY_noun>",
+            "lexy": [],
+            "pattern": "(<MODAL>必(須)</MODAL>)(<(MODIFIER|ModifierP)>[^<]+</(MODIFIER|ModifierP)>)?<(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>[^<]+</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>(?!^(<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>))"
+        },
+        "開車必需精神充足": {
+            "id": "fc990a13-8e39-409a-856a-197ef68a38b5",
+            "pos": "<ACTION_verb>開車</ACTION_verb><MODAL>必</MODAL><ACTION_verb>需</ACTION_verb><ENTITY_noun>精神</ENTITY_noun><MODIFIER>充足</MODIFIER>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(開車|乘車|駕車|開走|駛離|騎車|坐車|上車|棄車|過馬路|兜風)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需|需要|想拿|想要|想買|需約|需另|允許|要|需經過|需預)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>(<MODAL>必</MODAL>)<(ACTION_verb|VerbP)>需</(ACTION_verb|VerbP)><(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>[^品|用品]+</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>(<(MODIFIER|ModifierP)>[^<]+</(MODIFIER|ModifierP)>)?"
+        }
+    },
+    "alias": {},
+    "prompt": {},
+    "document": []
+}
