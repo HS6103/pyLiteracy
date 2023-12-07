@@ -11,7 +11,7 @@
             "id": "695fe22b-ed8d-4801-940c-0ce91c77c815",
             "pos": "<MODAL>必須</MODAL><ENTITY_oov>品</ENTITY_oov>",
             "lexy": [],
-            "pattern": "<MODAL>必須</MODAL><(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>品</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>"
+            "pattern": "<MODAL>必(須)</MODAL><(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>品|用品|維生素</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>"
         },
         "必需寫完": {
             "id": "cccf5457-0bf4-4e91-a265-60e5ed6d1bec",
@@ -52,7 +52,7 @@
                 "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(開車|乘車|駕車|開走|駛離|騎車|坐車|上車|棄車|過馬路|兜風)</(ACTION_verb|VerbP)>",
                 "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需|需要|想拿|想要|想買|需約|需另|允許|要|需經過|需預)</(ACTION_verb|VerbP)>"
             ],
-            "pattern": "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>(<MODAL>必</MODAL>)<(ACTION_verb|VerbP)>需</(ACTION_verb|VerbP)><(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>[^品|用品]+</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>(<(MODIFIER|ModifierP)>[^<]+</(MODIFIER|ModifierP)>)?"
+            "pattern": "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>(<MODAL>必</MODAL>)<(ACTION_verb|VerbP)>需</(ACTION_verb|VerbP)><(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>[^品|用品|維生素]+</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>(<(MODIFIER|ModifierP)>[^<]+</(MODIFIER|ModifierP)>)?"
         }
     },
     "alias": {},

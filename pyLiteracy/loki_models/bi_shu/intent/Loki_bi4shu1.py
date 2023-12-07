@@ -54,42 +54,66 @@ def getResult(inputSTR, utterance, args, resultDICT, refDICT):
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
-            # write your code here
+            resultDICT = {"status": True,
+                "msg": "",
+                "check": {"必須":[inputSTR]},
+                "proofread": ""
+              }
             pass
 
     if utterance == "必需寫完":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
-            # write your code here
+            resultDICT = {"status": True,
+                "msg": "",
+                "check": {"必須":[inputSTR]},
+                "proofread": ""
+              }
             pass
 
     if utterance == "必需要做":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
-            # write your code here
+            resultDICT = {"status": True,
+                "msg": "",
+                "check": {"必須":[inputSTR]},
+                "proofread": ""
+              }
             pass
 
     if utterance == "必須充足陽光":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
-            # write your code here
+            resultDICT = {"status": True,
+                "msg": "",
+                "check": {"必需":[inputSTR]},
+                "proofread": ""
+              }
             pass
 
     if utterance == "必須品":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
-            # write your code here
+            resultDICT = {"status": True,
+                "msg": "",
+                "check": {"必需":[inputSTR]},
+                "proofread": ""
+              }
             pass
 
     if utterance == "開車必需精神充足":
         if CHATBOT_MODE:
             resultDICT["response"] = getResponse(utterance, args)
         else:
-            # write your code here
+            resultDICT = {"status": True,
+                "msg": "",
+                "check": {"必須":[inputSTR]},
+                "proofread": ""
+              }
             pass
 
     return resultDICT
