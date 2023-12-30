@@ -1,0 +1,38 @@
+{
+    "language": "zh-tw",
+    "type": "advance",
+    "version": {
+        "atk": "v268",
+        "intent": "1.0"
+    },
+    "user_defined": {},
+    "utterance": {
+        "必須品": {
+            "id": "4f3a2485-bb4e-496e-840b-18d7acf84a7d",
+            "pos": "<MODAL>必須</MODAL><ENTITY_oov>品</ENTITY_oov>",
+            "lexy": [],
+            "pattern": "<MODAL>必須</MODAL><(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>品</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>"
+        },
+        "是必須": {
+            "id": "f99dcf87-2ec3-4119-a4dc-cdc91b0a7cd2",
+            "pos": "<AUX>是</AUX><MODAL>必須</MODAL>",
+            "lexy": [],
+            "pattern": "<AUX>[^<]+</AUX>(<ENTITY_classifier>[^<]+</ENTITY_classifier>)?<MODAL>必須</MODAL>"
+        },
+        "必須維他命": {
+            "id": "a3bb5c09-7621-4023-88c4-87b16d1eece0",
+            "pos": "<MODAL>必須</MODAL><ENTITY_noun>維他命</ENTITY_noun>",
+            "lexy": [],
+            "pattern": "<MODAL>必須</MODAL><(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>[^<]+</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>"
+        },
+        "必須胺基酸": {
+            "id": "c0f3b891-3e06-4ef5-adce-f404ff24854b",
+            "pos": "<MODAL>必須</MODAL><KNOWLEDGE_chemical>胺基酸</KNOWLEDGE_chemical>",
+            "lexy": [],
+            "pattern": "<MODAL>必須</MODAL><KNOWLEDGE_chemical>[^<]+</KNOWLEDGE_chemical>"
+        }
+    },
+    "alias": {},
+    "prompt": {},
+    "document": []
+}

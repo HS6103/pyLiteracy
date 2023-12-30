@@ -1,0 +1,71 @@
+{
+    "language": "zh-tw",
+    "type": "advance",
+    "version": {
+        "atk": "v268",
+        "intent": "1.0"
+    },
+    "user_defined": {},
+    "utterance": {
+        "必需你親自去": {
+            "id": "f310715e-fc6b-4ade-8aee-c81d18aed611",
+            "pos": "<MODAL>必</MODAL><ACTION_verb>需</ACTION_verb><ENTITY_pronoun>你</ENTITY_pronoun><MODIFIER>親自</MODIFIER><ACTION_verb>去</ACTION_verb>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需|需要|想拿|想要|想買|需約|需另|允許|要|需經過|需預)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(去|要去|回去|想去|去了|跑去|回來|跑來|趕去|出去|來)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "<MODAL>必</MODAL><(ACTION_verb|VerbP)>需</(ACTION_verb|VerbP)>(<ENTITY_pronoun>[^<]+</ENTITY_pronoun>)?(<(MODIFIER|ModifierP)>[^<]+</(MODIFIER|ModifierP)>)?(<FUNC_degreeHead>[^<]+</FUNC_degreeHead>)?<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>"
+        },
+        "必需要認真讀": {
+            "id": "b35111e8-4692-4157-989a-d29c1dfde8f7",
+            "pos": "<MODAL>必</MODAL><ACTION_verb>需要</ACTION_verb><MODIFIER>認真</MODIFIER><ACTION_verb>讀</ACTION_verb>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需要|想要|索要|要求|需求|想拿|想買|索求|索討|允許|願意)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(讀|讀書|唸|讀完|讀到|念|讀過|研讀|重讀|唸書|就讀)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "(<MODAL>[^<]+</MODAL>)<(ACTION_verb|VerbP)>需要</(ACTION_verb|VerbP)>(<(MODIFIER|ModifierP)>[^<]+</(MODIFIER|ModifierP)>)?<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>"
+        },
+        "開車必需專心": {
+            "id": "9f9a60d5-11fd-4b2b-97fc-47be91259c1b",
+            "pos": "<ACTION_verb>開車</ACTION_verb><MODAL>必</MODAL><ACTION_verb>需</ACTION_verb><ACTION_verb>專心</ACTION_verb>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(開車|乘車|駕車|開走|駛離|騎車|坐車|上車|棄車|過馬路|兜風)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需|需要|想拿|想要|想買|需約|需另|允許|要|需經過|需預)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(專心|專注|埋首|發奮|潛心|用功|拚命|花時間|忙於|掙錢|熱衷)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>(<MODAL>[^<]+</MODAL>)<(ACTION_verb|VerbP)>需</(ACTION_verb|VerbP)>(<FUNC_in(ner|ter)>[^<]+</FUNC_in(ner|ter)>)?<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>"
+        },
+        "開車必需要認真": {
+            "id": "b417a7c1-7f50-4e40-b8fa-075c988a385d",
+            "pos": "<ACTION_verb>開車</ACTION_verb><MODAL>必</MODAL><ACTION_verb>需要</ACTION_verb><MODIFIER>認真</MODIFIER>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(開車|乘車|駕車|開走|駛離|下車|走路|騎車|過馬路|坐車|遛狗)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需要|想要|索要|要求|需求|想拿|想買|索求|索討|允許|願意)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>(<MODAL>[^<]+</MODAL>)?<(ACTION_verb|VerbP)>需要</(ACTION_verb|VerbP)>(<(MODIFIER|ModifierP)>[^<]+</(MODIFIER|ModifierP)>)?"
+        },
+        "開車必需精神充足": {
+            "id": "9b7332c4-8ab6-474a-9730-2d92da39471c",
+            "pos": "<ACTION_verb>開車</ACTION_verb><MODAL>必</MODAL><ACTION_verb>需</ACTION_verb><ENTITY_noun>精神</ENTITY_noun><MODIFIER>充足</MODIFIER>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(開車|乘車|駕車|開走|駛離|騎車|坐車|上車|棄車|過馬路|兜風)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需|需要|想拿|想要|想買|需約|需另|允許|要|需經過|需預)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>[^<]+</(ACTION_verb|VerbP)>(<MODAL>必</MODAL>)<(ACTION_verb|VerbP)>需</(ACTION_verb|VerbP)><(UserDefined|ENTITY_(nounHead|nouny|noun|oov))>[^<]+</(UserDefined|ENTITY_(nounHead|nouny|noun|oov))?>(<(MODIFIER|ModifierP)>[^<]+</(MODIFIER|ModifierP)>)?"
+        },
+        "必需以形象以及主觀意識的嚴重毀棄做為代價": {
+            "id": "5702308a-3b53-4873-b39a-301d7579791a",
+            "pos": "<MODAL>必</MODAL><ACTION_verb>需</ACTION_verb><FUNC_inner>以</FUNC_inner><ENTITY_noun>形象</ENTITY_noun><FUNC_conjunction>以及</FUNC_conjunction><MODIFIER>主觀</MODIFIER><ACTION_verb>意識</ACTION_verb><FUNC_inner>的</FUNC_inner><MODIFIER>嚴重</MODIFIER><ACTION_verb>毀棄</ACTION_verb><ACTION_verb>做</ACTION_verb><AUX>為</AUX><ENTITY_nouny>代價</ENTITY_nouny>",
+            "lexy": [
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(需|需要|想拿|想要|想買|需約|需另|允許|要|需經過|需預)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(意識|知覺|偏見|自覺|仇恨)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(毀棄|革除|廢止了|觸犯了|違背|摒棄|廢棄了|削除|追奪|廢去|重訂)</(ACTION_verb|VerbP)>",
+                "(?<!</FUNC_negation>)<(ACTION_verb|VerbP)>(做|作用|假作|假裝|冒充|創作|創造|喬裝|孕育|攝製|生出)</(ACTION_verb|VerbP)>"
+            ],
+            "pattern": "(<MODAL>必</MODAL>)<(ACTION_verb|VerbP)>需</(ACTION_verb|VerbP)>(<FUNC_in(ner|ter)>[^<]+</FUNC_in(ner|ter)>)"
+        }
+    },
+    "alias": {},
+    "prompt": {},
+    "document": []
+}

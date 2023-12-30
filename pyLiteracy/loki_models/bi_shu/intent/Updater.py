@@ -27,9 +27,10 @@ USER_DEFINED_FILE = "USER_DEFINED.json"
 intentFilePAT = re.compile("^Loki_.+(?<!_updated)\.py$") #排除 1.0 產生的 _updted.py 檔案
 intentFileNamePAT = re.compile("^Loki_(.+)\.py$")
 chatbotModePAT = re.compile("^CHATBOT_MODE = (True|False)")
-utterancePAT = re.compile("if utterance == \"[^\"]+\":")
+utterancePAT = re.compile("if utterance == \".+\":$")
 userDefinedPAT = re.compile("userDefinedDICT = (\{.*\})$")
 endResultPAT = re.compile("^    return resultDICT$")
+
 
 def updateUtterance(newIntentPath):
     # 取得目前目錄下的 intent
@@ -69,11 +70,11 @@ def updateUtterance(newIntentPath):
             for newIntent in newIntentLIST:
                 if newIntent not in intentLIST:
                     indexLIST = [i for i, source in enumerate(sourceLIST) if utterancePAT.search(source)]
-                    indexINT = indexLIST[-1]
-                    for i, source in enumerate(sourceLIST[indexINT:]):
-                        if endResultPAT.search(source):
-                            indexINT = indexINT + i
-                            break
+                    if indexLIST:
+                        indexINT = indexLIST[-1]
+                    else:
+                        indexLIST = [i for i, source in enumerate(sourceLIST) if endResultPAT.search(source)]
+                        indexINT = indexLIST[-1]
 
                     if chatbotBOOL:
                         sourceLIST.insert(indexINT, """    {}

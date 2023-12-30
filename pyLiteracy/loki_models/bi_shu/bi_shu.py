@@ -43,21 +43,36 @@
 """
 
 from copy import deepcopy
+from glob import glob
+from importlib import import_module
+from pathlib import Path
 from requests import post
 from requests import codes
 import json
 import math
 import os
 import re
-try:
-    from intent import Loki_bi4shu1
-except:
-    from .intent import Loki_bi4shu1
 
+try:
+    from intent import Loki_bi_shu_must
+    from intent import Loki_bi_shu_necessity
+    
+except:
+    from .intent import Loki_bi_shu_must
+    from .intent import Loki_bi_shu_necessity
+
+BASE_PATH = os.path.dirname(os.path.abspath(__file__))
+
+lokiIntentDICT = {0: 'bi_shu_must', 1: 'bi_shu_necessity'}
+#for modulePath in glob("{}/intent/Loki_*.py".format(BASE_PATH)):
+    #moduleNameSTR = Path(modulePath).stem[5:]
+    #modulePathSTR = modulePath.replace(BASE_PATH, "").replace(".py", "").replace("/", ".")[1:]
+    #globals()[moduleNameSTR] = import_module(modulePathSTR)
+    #lokiIntentDICT[moduleNameSTR] = globals()[moduleNameSTR]
 
 LOKI_URL = "https://api.droidtown.co/Loki/BulkAPI/"
 try:
-    accountInfo = json.load(open(os.path.join(os.path.dirname(__file__), "account.info"), encoding="utf-8"))
+    accountInfo = json.load(open(os.path.join(BASE_PATH, "account.info"), encoding="utf-8"))
     USERNAME = accountInfo["username"]
     LOKI_KEY = accountInfo["loki_key"]
 except Exception as e:
@@ -176,26 +191,29 @@ class LokiResult():
         return rst
 
 def runLoki(inputLIST, filterLIST=[], refDICT={}):
-    resultDICT = deepcopy(refDICT)
+    resultDICT = refDICT
     lokiRst = LokiResult(inputLIST, filterLIST)
     if lokiRst.getStatus():
         for index, key in enumerate(inputLIST):
             lokiResultDICT = {}
             for resultIndex in range(0, lokiRst.getLokiLen(index)):
-                # bi4shu1
-                if lokiRst.getIntent(index, resultIndex) == "bi4shu1":
-                    lokiResultDICT = Loki_bi4shu1.getResult(key, lokiRst.getUtterance(index, resultIndex), lokiRst.getArgs(index, resultIndex), lokiResultDICT, refDICT)
+                # must
+                if lokiRst.getIntent(index, resultIndex) == "bi_shu_must":
+                    lokiResultDICT = Loki_bi_shu_must.getResult(key, lokiRst.getUtterance(index, resultIndex), lokiRst.getArgs(index, resultIndex), lokiResultDICT, refDICT)
+                # necessity
+                if lokiRst.getIntent(index, resultIndex) == "bi_shu_necessity":
+                    lokiResultDICT = Loki_bi_shu_necessity.getResult(key, lokiRst.getUtterance(index, resultIndex), lokiRst.getArgs(index, resultIndex), lokiResultDICT, refDICT)
 
-            # save lokiResultDICT to resultDICT
-            for k in lokiResultDICT:
-                if k not in resultDICT:
-                    resultDICT[k] = []
-                if type(resultDICT[k]) != list:
-                    resultDICT[k] = [resultDICT[k]] if resultDICT[k] else []
-                if type(lokiResultDICT[k]) == list:
-                    resultDICT[k].extend(lokiResultDICT[k])
-                else:
-                    resultDICT[k].append(lokiResultDICT[k])
+        # save lokiResultDICT to resultDICT
+        for k in lokiResultDICT:
+            if k not in resultDICT:
+                resultDICT[k] = []
+            if type(resultDICT[k]) != list:
+                resultDICT[k] = [resultDICT[k]] if resultDICT[k] else []
+            if type(lokiResultDICT[k]) == list:
+                resultDICT[k].extend(lokiResultDICT[k])
+            else:
+                resultDICT[k].append(lokiResultDICT[k])
     else:
         resultDICT["msg"] = lokiRst.getMessage()
     return resultDICT
@@ -260,16 +278,22 @@ def testLoki(inputLIST, filterLIST):
         print(resultDICT["msg"])
 
 def testIntent():
-    # bi4shu1
-    print("[TEST] bi4shu1")
-    inputLIST = ['必須品','必需寫完','必需要做','必需你親自去','必須充足陽光','開車必需精神充足']
-    testLoki(inputLIST, ['bi4shu1'])
+    # bi_shu_necessity
+    print("[TEST] bi_shu_necessity")
+    inputLIST = ['必須品','是必須','必須胺基酸']
+    testLoki(inputLIST, ['bi_shu_necessity'])
+    print("")
+
+    # bi_shu_must
+    print("[TEST] bi_shu_must")
+    inputLIST = ['必需你親自去','必需要認真讀','開車必需專心','開車必需要認真','開車必需精神充足']
+    testLoki(inputLIST, ['bi_shu_must'])
     print("")
 
 
 if __name__ == "__main__":
     # 測試所有意圖
-    testIntent()
+    #testIntent()
 
     # 測試其它句子
     filterLIST = []
@@ -278,6 +302,11 @@ if __name__ == "__main__":
     refDICT = {
         #"key": []
     }
-    resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, refDICT=refDICT)                      # output => {"key": ["今天天氣"]}
-    resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, splitLIST=splitLIST, refDICT=refDICT) # output => {"key": ["今天天氣", "後天氣象"]}
-    resultDICT = execLoki(["今天天氣如何？", "後天氣象如何？"], filterLIST=filterLIST, refDICT=refDICT)                # output => {"key": ["今天天氣", "後天氣象"]}
+    
+
+    inputLIST = ["把蒟蒻視為三餐必需的配料"]
+    resultDICT = runLoki(inputLIST)
+    print(resultDICT)
+    #resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, refDICT=refDICT)                      # output => {"key": ["今天天氣"]}
+    #resultDICT = execLoki("今天天氣如何？後天氣象如何？", filterLIST=filterLIST, splitLIST=splitLIST, refDICT=refDICT) # output => {"key": ["今天天氣", "後天氣象"]}
+    #resultDICT = execLoki(["今天天氣如何？", "後天氣象如何？"], filterLIST=filterLIST, refDICT=refDICT)                # output => {"key": ["今天天氣", "後天氣象"]}
